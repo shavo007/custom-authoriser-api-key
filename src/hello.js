@@ -11,7 +11,9 @@ const message = ({ time, ...rest }) =>
 const hello = async (event, context, callback) => {
   const helloWorld = new HelloWorld('world');
 
-  logger.error(`exception Bar`);
+  logger.info(`request params ${JSON.stringify(event)}`);
+
+  // logger.error(`exception Bar`);
 
   const response = {
     statusCode: 200,

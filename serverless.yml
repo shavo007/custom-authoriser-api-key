@@ -31,7 +31,7 @@ custom:
         topic: ${self:service}-${opt:stage}-alerts-alarm
         notifications:
           - protocol: email
-            endpoint: shanelee007@gmail.com # Change this to your email address
+            endpoint: xxx@gmail.com # Change this to your email address
     definitions:  # these defaults are merged with your definitions
       # functionErrors:
         # period: 300 # override period
@@ -53,10 +53,20 @@ custom:
 provider:
   name: aws
   runtime: nodejs8.10
+  apiKeys:
+      - ${opt:stage}-key
+  usagePlan:
+    quota:
+      limit: 5000
+      offset: 2
+      period: MONTH
+    throttle:
+      burstLimit: 200
+      rateLimit: 100
 
 # you can overwrite defaults here
 #  stage: dev
-region: ap-southeast-2
+# region: ap-southeast-2
 
 
 functions:
@@ -66,7 +76,17 @@ functions:
           - http:
               path: hello
               method: get
-              cors: true
+              # cors: true
+              private: true
+              authorizer:
+                name: authorizerFunc
+                resultTtlInSeconds: 0
+                # identitySource: method.request.header.Authorization
+                # identityValidationExpression: someRegex
+                type: request
+  authorizerFunc:
+    handler: src/authoriser.default
+
   app:
     handler: src/index.handler
     events:
