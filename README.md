@@ -85,7 +85,7 @@ Assuming you've already set up your default AWS credentials
 After you've deployed, the output of the deploy script will give you the API endpoint
 for your deployed function(s), and most importantly the **api key value**
 
-Copy this value into the custom authoriser variable `usageIdentifierKey` located at [`./src/authoriser.js`](./authoriser.js)
+Copy this value into the custom authoriser variable `usageIdentifierKey` located at [`./src/authoriser.js`](./src/authoriser.js)
 
 **the Lambda authorizer Lambda function must also return an API key of the usage plan as the usageIdentifierKey property value**
 
