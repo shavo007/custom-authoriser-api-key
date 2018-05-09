@@ -1,8 +1,7 @@
 {
-    "extends": [
-        "config:base"
-    ],
-    "packageRules": [{
+    "extends": ["config:base"],
+    "packageRules": [
+        {
             "packagePatterns": ["^eslint"],
             "enabled": false
         },
@@ -10,6 +9,10 @@
             "packageNames": ["aws-sdk"],
             "schedule": ["after 9pm on sunday"],
             "timezone": "Australia/Melbourne"
+        },
+        {
+            "depTypeList": ["devDependencies"],
+            "automerge": true
         }
     ],
     "automerge": true,
