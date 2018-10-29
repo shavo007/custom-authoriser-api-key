@@ -79,7 +79,7 @@
         "babel-preset-env": "1.7.0",
         "babel-preset-stage-3": "6.24.1",
         "chai": "4.2.0",
-        "coveralls": "3.0.1",
+        "coveralls": "3.0.2",
         "cross-env": "5.2.0",
         "eslint": "4.19.1",
         "eslint-config-airbnb": "16.1.0",
